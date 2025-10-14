@@ -4,10 +4,12 @@ import org.example.spring_kafka.dto.AccountCreateDTO;
 import org.example.spring_kafka.dto.AccountDTO;
 import org.example.spring_kafka.dto.AccountUpdateDTO;
 import org.example.spring_kafka.exception.ResourceNotFoundException;
+import org.example.spring_kafka.exception.UserNotFoundException;
 import org.example.spring_kafka.mapper.AccountMapper;
 import org.example.spring_kafka.model.Account;
 import org.example.spring_kafka.repository.AccountRepository;
 
+import org.example.spring_kafka.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,9 @@ import java.util.List;
 public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private AccountMapper accountMapper;
@@ -37,6 +42,11 @@ public class AccountService {
     }
 
     public AccountDTO create(AccountCreateDTO data) {
+        boolean userExists = userRepository.existsById(data.getUserId());
+        if (!userExists) {
+            throw new UserNotFoundException("User with id " + data.getUserId() + " not found");
+        }
+
         Account account = accountMapper.map(data);
         accountRepository.save(account);
 
