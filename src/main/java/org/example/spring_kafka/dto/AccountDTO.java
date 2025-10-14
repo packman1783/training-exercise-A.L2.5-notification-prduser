@@ -12,6 +12,14 @@ public class AccountDTO {
     private LocalDate createdAt;
     private LocalDate updatedAt;
 
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
     public Long getId() {
         return id;
     }
