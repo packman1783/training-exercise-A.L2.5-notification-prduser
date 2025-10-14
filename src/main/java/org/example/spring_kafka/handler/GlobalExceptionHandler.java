@@ -1,6 +1,7 @@
 package org.example.spring_kafka.handler;
 
 import org.example.spring_kafka.exception.ResourceNotFoundException;
+import org.example.spring_kafka.exception.UserNotFoundException;
 
 import org.hibernate.exception.ConstraintViolationException;
 
@@ -21,5 +22,10 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<String> handleConstraintViolationException(ConstraintViolationException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<String> handleUserNotFound(UserNotFoundException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 }
