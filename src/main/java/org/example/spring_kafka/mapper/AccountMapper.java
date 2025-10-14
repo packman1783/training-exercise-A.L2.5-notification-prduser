@@ -18,7 +18,7 @@ import org.mapstruct.ReportingPolicy;
         componentModel = MappingConstants.ComponentModel.SPRING,
         unmappedTargetPolicy = ReportingPolicy.IGNORE
 )
-public abstract class BookMapper {
+public abstract class AccountMapper {
     @Mapping(target = "user", source = "userId")
     public abstract Account map(AccountCreateDTO dto);
 
