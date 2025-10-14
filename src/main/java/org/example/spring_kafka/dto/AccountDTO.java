@@ -8,6 +8,7 @@ public class AccountDTO {
     private String userFirstName;
     private String userLastName;
     private String title;
+    private String userEmail;
     private LocalDate createdAt;
     private LocalDate updatedAt;
 
