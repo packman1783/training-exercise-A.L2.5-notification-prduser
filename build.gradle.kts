@@ -43,6 +43,9 @@ dependencies {
     testImplementation("org.testcontainers:junit-jupiter:1.21.3")
     testImplementation("org.testcontainers:postgresql:1.21.3")
 
+    testImplementation ("org.springframework.kafka:spring-kafka-test")
+    testImplementation ("org.testcontainers:kafka:1.21.3")
+
     testImplementation("net.javacrumbs.json-unit:json-unit-assertj:4.1.1")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
