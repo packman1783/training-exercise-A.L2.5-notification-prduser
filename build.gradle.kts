@@ -25,13 +25,16 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
+    implementation ("org.springframework.kafka:spring-kafka")
+    implementation ("org.springframework.boot:spring-boot-starter-mail")
+
+    implementation("org.postgresql:postgresql")
+
     annotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
     implementation("org.mapstruct:mapstruct:1.6.3")
     testAnnotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
 
     implementation("org.openapitools:jackson-databind-nullable:0.2.6")
-
-    implementation("org.postgresql:postgresql")
 
     implementation("net.datafaker:datafaker:2.5.2")
     implementation("org.instancio:instancio-junit:5.5.1")
