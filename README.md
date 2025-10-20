@@ -9,11 +9,7 @@ MailHog, Zookeeper, Kafka was realised in docker
 
 *create topic:*
 
-``docker exec -it kafka bash``
-
-`` kafka-topics --bootstrap-server localhost:9092 --create --topic user.notifications --partitions 1 --replication-factor 1``
-
-``kafka-topics --bootstrap-server localhost:9092 --list``
+realised with Spring Boot
 
 *work with message:*
 
