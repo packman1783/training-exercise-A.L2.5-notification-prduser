@@ -1,7 +1,5 @@
 **Java Spring Boot, Kafka working with entity User and Account**
 
-### !!! kafka - producer !!!
-
 When deleting or creating a user, the application must send a message to kafka, 
 which contains information about the operation and the user’s email.
 
