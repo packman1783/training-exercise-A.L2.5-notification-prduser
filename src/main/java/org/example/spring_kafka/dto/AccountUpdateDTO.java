@@ -1,9 +1,12 @@
 package org.example.spring_kafka.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import jakarta.validation.constraints.NotNull;
 
 import org.openapitools.jackson.nullable.JsonNullable;
 
+@Schema(description = "DTO for updating an account")
 public class AccountUpdateDTO {
     @NotNull
     JsonNullable<Long> userId;

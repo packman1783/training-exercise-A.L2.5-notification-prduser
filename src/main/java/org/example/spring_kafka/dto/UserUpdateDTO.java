@@ -1,7 +1,10 @@
 package org.example.spring_kafka.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import org.openapitools.jackson.nullable.JsonNullable;
 
+@Schema(description = "DTO for updating a user")
 public class UserUpdateDTO {
     private JsonNullable<String> firstName;
 

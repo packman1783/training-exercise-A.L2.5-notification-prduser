@@ -1,7 +1,10 @@
 package org.example.spring_kafka.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.time.LocalDate;
 
+@Schema(description = "User in the system")
 public class UserDTO {
     private long id;
     private String firstName;

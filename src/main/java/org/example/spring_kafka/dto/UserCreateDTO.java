@@ -1,7 +1,10 @@
 package org.example.spring_kafka.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import jakarta.validation.constraints.NotBlank;
 
+@Schema(description = "DTO for creating a user")
 public class UserCreateDTO {
     @NotBlank
     private String firstName;
