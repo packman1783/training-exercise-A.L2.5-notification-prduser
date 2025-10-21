@@ -23,6 +23,7 @@ Thanks to this project it was possible to learn:
 - Kafka
 - test containers
 - swagger
+- HATEOAS
 
 
 
