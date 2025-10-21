@@ -13,6 +13,8 @@ MailHog, Zookeeper, Kafka was realised in docker-compose.yml
 
 *swagger:* http://localhost:8080/swagger-ui.html 
 
+HATEOAS implemented using `ModelAssembler` (a structured approach with a separate assembler class for generating models with references).
+
 Thanks to this project it was possible to learn:
 
 - realized OneToMany Bidirectional relationship
