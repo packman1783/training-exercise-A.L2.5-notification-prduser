@@ -1,7 +1,6 @@
 package org.example.spring_kafka.modelAssembler;
 
 import org.example.spring_kafka.controller.AccountController;
-import org.example.spring_kafka.controller.UserController;
 import org.example.spring_kafka.dto.AccountDTO;
 
 import org.springframework.hateoas.EntityModel;
