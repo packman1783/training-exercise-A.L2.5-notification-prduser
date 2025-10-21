@@ -1,17 +1,20 @@
 package org.example.spring_kafka.controller;
 
-import org.example.spring_kafka.dto.UserCreateDTO;
-import org.example.spring_kafka.dto.UserDTO;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import jakarta.validation.Valid;
 
-import java.util.List;
-
+import org.example.spring_kafka.dto.UserCreateDTO;
+import org.example.spring_kafka.dto.UserDTO;
 import org.example.spring_kafka.dto.UserUpdateDTO;
+import org.example.spring_kafka.modelAssembler.UserModelAssembler;
 import org.example.spring_kafka.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,52 +25,55 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.swagger.v3.oas.annotations.tags.Tag;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.Operation;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/users")
-@Tag(name = "Users", description = "User Operations")
+@Tag(name = "Users", description = "Operations related to users (HATEOAS-enabled)")
 public class UserController {
     @Autowired
     private UserService userService;
 
-    @Operation(summary = "Get list of users")
-    @ApiResponse(responseCode = "200", description = "List received successfully")
+    @Autowired
+    private UserModelAssembler assembler;
+
     @GetMapping
-    public List<UserDTO> index() {
-        return userService.getAll();
+    public CollectionModel<EntityModel<UserDTO>> index() {
+        var users = userService.getAll().stream()
+                .map(assembler::toModel)
+                .toList();
+
+        return CollectionModel.of(users,
+                linkTo(methodOn(UserController.class).index()).withSelfRel());
     }
 
-    @Operation(summary = "Get user by ID")
-    @ApiResponse(responseCode = "200", description = "User found")
-    @ApiResponse(responseCode = "404", description = "User not found")
     @GetMapping("/{id}")
-    public UserDTO show(@PathVariable long id) {
-        return userService.findById(id);
+    public EntityModel<UserDTO> show(@PathVariable long id) {
+        var user = userService.findById(id);
+
+        return assembler.toModel(user);
     }
 
-    @Operation(summary = "Create a new user")
-    @ApiResponse(responseCode = "201", description = "User successfully created")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDTO create(@Valid @RequestBody UserCreateDTO data) {
-        return userService.create(data);
+    public EntityModel<UserDTO> create(@Valid @RequestBody UserCreateDTO data) {
+        var created = userService.create(data);
+
+        return assembler.toModel(created);
     }
 
-    @Operation(summary = "Update user details")
-    @ApiResponse(responseCode = "200", description = "User updated successfully")
     @PutMapping("/{id}")
-    public UserDTO update(@Valid @RequestBody UserUpdateDTO data, @PathVariable long id) {
-        return userService.update(data, id);
+    public EntityModel<UserDTO> update(@Valid @RequestBody UserUpdateDTO data, @PathVariable long id) {
+        var updated = userService.update(data, id);
+
+        return assembler.toModel(updated);
     }
 
-    @Operation(summary = "Delete user by ID")
-    @ApiResponse(responseCode = "204", description = "User successfully deleted")
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable long id) {
+    public ResponseEntity<Void> delete(@PathVariable long id) {
         userService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
