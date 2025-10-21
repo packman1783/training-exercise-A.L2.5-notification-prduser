@@ -51,6 +51,7 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.13")
+    implementation("org.springframework.boot:spring-boot-starter-hateoas")
 }
 
 tasks.withType<Test> {
