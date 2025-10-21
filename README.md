@@ -3,11 +3,7 @@
 When deleting or creating a user, the application must send a message to kafka, 
 which contains information about the operation and the user’s email.
 
-MailHog, Zookeeper, Kafka was realised in docker
-
-*create topic:*
-
-realised with Spring Boot
+MailHog, Zookeeper, Kafka was realised in docker-compose.yml
 
 *work with message:*
 
@@ -15,6 +11,7 @@ realised with Spring Boot
 
 ``kafka-console-producer --broker-list localhost:9092 --topic user.notifications``
 
+*swagger:* http://localhost:8080/swagger-ui.html 
 
 Thanks to this project it was possible to learn:
 
@@ -25,6 +22,7 @@ Thanks to this project it was possible to learn:
 - PostgreSQL 
 - Kafka
 - test containers
+- swagger
 
 
 
