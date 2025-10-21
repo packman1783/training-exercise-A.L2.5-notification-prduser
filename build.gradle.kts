@@ -49,6 +49,8 @@ dependencies {
     testImplementation("net.javacrumbs.json-unit:json-unit-assertj:4.1.1")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.13")
 }
 
 tasks.withType<Test> {
