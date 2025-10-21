@@ -19,39 +19,33 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-devtools")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-
     implementation ("org.springframework.kafka:spring-kafka")
     implementation ("org.springframework.boot:spring-boot-starter-mail")
-
     implementation("org.postgresql:postgresql")
-
-    annotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
     implementation("org.mapstruct:mapstruct:1.6.3")
-    testAnnotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
-
     implementation("org.openapitools:jackson-databind-nullable:0.2.6")
-
     implementation("net.datafaker:datafaker:2.5.2")
     implementation("org.instancio:instancio-junit:5.5.1")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.13")
+    implementation("org.springframework.boot:spring-boot-starter-hateoas")
+
+    annotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
+
+    testAnnotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
 
     testImplementation("org.springframework.boot:spring-boot-testcontainers")
     testImplementation("org.testcontainers:junit-jupiter:1.21.3")
     testImplementation("org.testcontainers:postgresql:1.21.3")
-
     testImplementation ("org.springframework.kafka:spring-kafka-test")
     testImplementation ("org.testcontainers:kafka:1.21.3")
-
     testImplementation("net.javacrumbs.json-unit:json-unit-assertj:4.1.1")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.13")
-    implementation("org.springframework.boot:spring-boot-starter-hateoas")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.withType<Test> {
