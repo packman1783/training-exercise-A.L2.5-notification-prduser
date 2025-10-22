@@ -1,27 +1,37 @@
-**Java Spring Boot, Kafka working with entity User and Account**
+**Spring Boot service working with entity User and Account**
 
-When deleting or creating a user, the application must send a message to kafka, 
-which contains information about the operation and the user’s email.
+The User Service is responsible for CRUD operations with users.
+After creating or deleting a user, the service generates a NotificationEvent and sends it to the user.notifications Kafka topic.
 
-MailHog, Zookeeper, Kafka was realised in docker-compose.yml
+Both microservices use a common infrastructure stack deployed via Docker Compose.
 
-*work with message:*
+zookeeper - coordination for Kafka  
+kafka - Message broker  
+mailhog - test SMTP server for testing email sending  
+user-service - microservice for user management and publishing Kafka events  
+notification-service - microservice for receiving events and sending emails  
 
-``docker exec -it kafka bash``
+HATEOAS implemented using ModelAssembler (a structured approach with a separate assembler class for generating models with references).
 
-``kafka-console-producer --broker-list localhost:9092 --topic user.notifications``
+*example:*  
+```
+{  
+  "operation": "USER_CREATED",  
+  "email": "user@mail.com"   
+}
+```
+*user service:* http://localhost:8080  
+*notification service:* http://localhost:8081  
+*swagger:* http://localhost:8080/swagger-ui.html   
+*mailhog:* http://localhost:8025
 
-*swagger:* http://localhost:8080/swagger-ui.html 
-
-HATEOAS implemented using `ModelAssembler` (a structured approach with a separate assembler class for generating models with references).
-
-Thanks to this project it was possible to learn:
-
+Thanks to this project it was possible to learn:  
 - realized OneToMany Bidirectional relationship
 - work with REST API
 - Spring Data JPA
 - CRUD for User and Account
 - PostgreSQL 
+- Spring Boot
 - Kafka
 - test containers
 - swagger
