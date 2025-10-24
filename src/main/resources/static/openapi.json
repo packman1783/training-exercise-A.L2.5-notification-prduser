@@ -1,0 +1,44 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Spring Kafka User & Account API",
+    "description" : "REST API for managing users and accounts.\nSupports sending events to the Kafka topic `user.notifications`.\n",
+    "termsOfService" : null,
+    "contact" : {
+      "name" : "Tea Pot Team",
+      "url" : null,
+      "email" : "fake-email@mail.com",
+      "extensions" : null
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "https://www.apache.org/licenses/LICENSE-2.0.html",
+      "identifier" : null,
+      "extensions" : null
+    },
+    "version" : "1.0",
+    "extensions" : null,
+    "summary" : null
+  },
+  "externalDocs" : null,
+  "servers" : null,
+  "security" : null,
+  "tags" : null,
+  "paths" : { },
+  "components" : {
+    "schemas" : null,
+    "responses" : null,
+    "parameters" : null,
+    "examples" : null,
+    "requestBodies" : null,
+    "headers" : null,
+    "securitySchemes" : null,
+    "links" : null,
+    "callbacks" : null,
+    "extensions" : null,
+    "pathItems" : null
+  },
+  "extensions" : null,
+  "jsonSchemaDialect" : null,
+  "webhooks" : null
+}
