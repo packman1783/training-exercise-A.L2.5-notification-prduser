@@ -3,7 +3,7 @@
 The User Service is responsible for CRUD operations with users.
 After creating or deleting a user, the service generates a NotificationEvent and sends it to the user.notifications Kafka topic.
 
-Both microservices use a common infrastructure stack deployed via Docker Compose.
+Both microservices use a common infrastructure stack deployed via Docker Compose and local postreSQL.
 
 zookeeper - coordination for Kafka  
 kafka - Message broker  
@@ -22,7 +22,7 @@ HATEOAS implemented using ModelAssembler (a structured approach with a separate 
 ```
 *user service:* http://localhost:8080  
 *notification service:* http://localhost:8081  
-*swagger:* http://localhost:8080/swagger-ui.html   
+*swagger:* http://localhost:8080/swagger-ui.html or src/main/resources/static/openapi.json  
 *mailhog:* http://localhost:8025
 
 Thanks to this project it was possible to learn:  
