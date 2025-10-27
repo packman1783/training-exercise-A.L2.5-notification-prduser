@@ -3,6 +3,7 @@ package org.example.spring_kafka.service;
 import org.example.spring_kafka.dto.UserCreateDTO;
 import org.example.spring_kafka.dto.UserDTO;
 import org.example.spring_kafka.event.NotificationEvent;
+import org.example.spring_kafka.event.OperationType;
 import org.example.spring_kafka.mapper.UserMapper;
 import org.example.spring_kafka.model.User;
 import org.example.spring_kafka.repository.UserRepository;
@@ -74,7 +75,7 @@ public class UserServiceTest {
         NotificationEvent sentEvent = captor.getValue();
 
         assertThat(sentEvent.getEmail()).isEqualTo("mad.max@mail.com");
-        assertThat(sentEvent.getOperation()).isEqualTo("USER_CREATED");
+        assertThat(sentEvent.getOperation()).isEqualTo(OperationType.USER_CREATED);
 
         assertThat(result.getFirstName()).isEqualTo("Max");
 
