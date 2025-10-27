@@ -1,22 +1,22 @@
 package org.example.spring_kafka.event;
 
 public class NotificationEvent {
-    private String operation;
+    private OperationType operation;
     private String email;
 
     public NotificationEvent() {
     }
 
-    public NotificationEvent(String operation, String email) {
+    public NotificationEvent(OperationType operation, String email) {
         this.operation = operation;
         this.email = email;
     }
 
-    public String getOperation() {
+    public OperationType getOperation() {
         return operation;
     }
 
-    public void setOperation(String operation) {
+    public void setOperation(OperationType operation) {
         this.operation = operation;
     }
 

@@ -14,6 +14,9 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import static org.example.spring_kafka.event.OperationType.USER_CREATED;
+import static org.example.spring_kafka.event.OperationType.USER_DELETED;
+import static org.example.spring_kafka.event.OperationType.USER_UPDATED;
 
 @Service
 public class UserService {
@@ -47,7 +50,7 @@ public class UserService {
         User user = userMapper.map(data);
         userRepository.save(user);
 
-        kafkaTemplate.send(TOPIC, new NotificationEvent("USER_CREATED", user.getEmail()));
+        kafkaTemplate.send(TOPIC, new NotificationEvent(USER_CREATED, user.getEmail()));
 
         return userMapper.map(user);
     }
@@ -59,6 +62,8 @@ public class UserService {
         userMapper.update(data, user);
         userRepository.save(user);
 
+        kafkaTemplate.send(TOPIC, new NotificationEvent(USER_UPDATED, user.getEmail()));
+
         return userMapper.map(user);
     }
 
@@ -69,6 +74,6 @@ public class UserService {
 
         userRepository.deleteById(id);
 
-        kafkaTemplate.send(TOPIC, new NotificationEvent("USER_DELETED", email));
+        kafkaTemplate.send(TOPIC, new NotificationEvent(USER_DELETED, email));
     }
 }
