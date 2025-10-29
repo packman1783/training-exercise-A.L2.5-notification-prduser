@@ -25,23 +25,26 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.kafka:spring-kafka")
     implementation("org.springframework.boot:spring-boot-starter-mail")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.13")
+    implementation("org.springframework.boot:spring-boot-starter-hateoas")
     implementation("org.postgresql:postgresql")
     implementation("org.mapstruct:mapstruct:1.6.3")
     implementation("org.openapitools:jackson-databind-nullable:0.2.6")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.13")
-    implementation("org.springframework.boot:spring-boot-starter-hateoas")
+
+
+    implementation("org.springframework.boot:spring-boot-configuration-processor")
 
     annotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
 
     testAnnotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
 
     testImplementation("org.springframework.boot:spring-boot-testcontainers")
+    testImplementation("org.springframework.kafka:spring-kafka-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:postgresql")
     testImplementation("org.testcontainers:kafka")
-    testImplementation("org.springframework.kafka:spring-kafka-test")
     testImplementation("net.javacrumbs.json-unit:json-unit-assertj")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
