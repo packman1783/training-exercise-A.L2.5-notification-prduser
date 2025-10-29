@@ -14,6 +14,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 import static org.example.spring_kafka.event.OperationType.USER_CREATED;
 import static org.example.spring_kafka.event.OperationType.USER_DELETED;
 import static org.example.spring_kafka.event.OperationType.USER_UPDATED;
