@@ -37,5 +37,33 @@ Thanks to this project it was possible to learn:
 - swagger
 - HATEOAS
 
+useful commands:
+```
+docker compose up -d
+docker ps
 
+netstat -tuln | grep 909
+nc -zv localhost 9092
+
+docker exec -it spring-kafka-kafka-1 bash
+[...]kafka-topics --bootstrap-server localhost:9092 --list
+
+docker exec -it spring-kafka-kafka-1 kafka-topics --bootstrap-server localhost:9092 --list
+docker exec -it spring-kafka-kafka-1 kafka-topics --bootstrap-server spring-kafka-kafka-1:9092 --describe --topic user.notifications
+docker exec -it spring-kafka-kafka-1 kafka-console-producer --bootstrap-server spring-kafka-kafka-1:9092 --topic user.notifications
+>{"operation":"USER_CREATED","email":"user@mail.com"}
+
+docker exec -it spring-kafka-kafka1 kafka-console-consumer --bootstrap-server spring-kafka-kafka-1:9092 --topic user.notifications --from-beginning
+
+docker exec -it spring-kafka-kafka1 kafka-topics --create --topic test-topic --partitions 1 --replication-factor 1 --bootstrap-server spring-kafka-kafka-1:9092
+docker exec -it spring-kafka-kafka1 kafka-console-producer \
+  --bootstrap-server localhost:9092 \
+  --topic test-topic \
+  --property "parse.key=true" \
+  --property "key.separator=:"
+>user1:{"operation":"USER_CREATED","email":"user@example.com"}  
+docker exec -it spring-kafka-kafka1 kafka-topics --bootstrap-server localhost:9092 --delete --topic test-topic
+
+./gradlew clean bootRun
+```
 
