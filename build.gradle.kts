@@ -44,7 +44,7 @@ dependencies {
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:postgresql")
     testImplementation("org.testcontainers:kafka")
-    testImplementation("net.javacrumbs.json-unit:json-unit-assertj")
+    testImplementation("net.javacrumbs.json-unit:json-unit-assertj:4.1.1")
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
