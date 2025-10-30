@@ -64,6 +64,8 @@ docker exec -it spring-kafka-kafka1 kafka-console-producer \
 >user1:{"operation":"USER_CREATED","email":"user@example.com"}  
 docker exec -it spring-kafka-kafka1 kafka-topics --bootstrap-server localhost:9092 --delete --topic test-topic
 
+docker exec -it spring-kafka-kafka1 kafka-console-consumer --bootstrap-server spring-kafka-kafka-1:9092 --topic test-topic --from-beginning
+
 ./gradlew clean bootRun
 ```
 
