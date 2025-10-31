@@ -1,5 +1,7 @@
 package org.example.spring_kafka.service;
 
+import jakarta.transaction.Transactional;
+
 import org.example.spring_kafka.dto.UserCreateDTO;
 import org.example.spring_kafka.dto.UserDTO;
 import org.example.spring_kafka.dto.UserUpdateDTO;
@@ -47,6 +49,7 @@ public class UserService {
         return userMapper.map(user);
     }
 
+    @Transactional
     public UserDTO create(UserCreateDTO data) {
         User user = userMapper.map(data);
         userRepository.save(user);
@@ -56,6 +59,7 @@ public class UserService {
         return userMapper.map(user);
     }
 
+    @Transactional
     public UserDTO update(UserUpdateDTO data, long id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User with id " + id + " not found"));
@@ -68,6 +72,7 @@ public class UserService {
         return userMapper.map(user);
     }
 
+    @Transactional
     public void delete(long id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User with id " + id + " not found"));

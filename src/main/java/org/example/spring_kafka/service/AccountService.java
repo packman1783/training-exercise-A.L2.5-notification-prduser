@@ -1,5 +1,7 @@
 package org.example.spring_kafka.service;
 
+import jakarta.transaction.Transactional;
+
 import org.example.spring_kafka.dto.AccountCreateDTO;
 import org.example.spring_kafka.dto.AccountDTO;
 import org.example.spring_kafka.dto.AccountUpdateDTO;
@@ -41,6 +43,7 @@ public class AccountService {
         return accountMapper.map(account);
     }
 
+    @Transactional
     public AccountDTO create(AccountCreateDTO data) {
         boolean userExists = userRepository.existsById(data.getUserId());
         if (!userExists) {
@@ -53,6 +56,7 @@ public class AccountService {
         return accountMapper.map(account);
     }
 
+    @Transactional
     public AccountDTO update(AccountUpdateDTO data, long id) {
         Account account = accountRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Account with id " + id + " not found"));
@@ -63,6 +67,7 @@ public class AccountService {
         return accountMapper.map(account);
     }
 
+    @Transactional
     public void delete(long id) {
         accountRepository.deleteById(id);
     }
