@@ -1,8 +1,8 @@
 **Spring Boot service working with entity User and Account**
 
 The User Service is responsible for CRUD operations with users.
-After creating or deleting a user, the service generates a NotificationEvent and sends it to the user.notifications Kafka topic.
-
+After creating or deleting user, the service generates NotificationEvent and sends it to the user.notifications Kafka topic.  
+(Another part is Notification Service which separate processing events from Kafka and sending email notifications)  
 Both microservices use a common infrastructure stack deployed via Docker Compose and local postreSQL.
 
 zookeeper - coordination for Kafka  
