@@ -6,10 +6,19 @@ import java.time.LocalDate;
 
 @Schema(description = "User in the system")
 public class UserDTO {
+    @Schema(description = "Unique user identifier", example = "1")
     private long id;
+
+    @Schema(description = "User's firstName", example = "Alice")
     private String firstName;
+
+    @Schema(description = "User's full lastName", example = "Cooper")
     private String lastName;
+
+    @Schema(description = "User's email address", example = "alice.cooper@mail.com")
     private String email;
+
+    @Schema(description = "User creation date", example = "2025-11-06")
     private LocalDate createdAt;
 
     public long getId() {

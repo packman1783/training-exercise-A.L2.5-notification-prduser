@@ -8,10 +8,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 @Schema(description = "DTO for updating an account")
 public class AccountUpdateDTO {
-    @NotNull
-    JsonNullable<Long> userId;
+    @Schema(description = "User ID (nullable if not updated)", example = "1")
+    private JsonNullable<Long> userId;
 
-    JsonNullable<String> title;
+    @Schema(description = "Account title (nullable if not updated)", example = "Updated account title")
+    private JsonNullable<String> title;
 
     public JsonNullable<Long> getUserId() {
         return userId;

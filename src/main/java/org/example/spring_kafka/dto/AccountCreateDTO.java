@@ -7,9 +7,11 @@ import jakarta.validation.constraints.NotNull;
 
 @Schema(description = "DTO for creating an account")
 public class AccountCreateDTO {
+    @Schema(description = "ID of the user to whom the account belongs", example = "1")
     @NotNull
     private Long userId;
 
+    @Schema(description = "Account title", example = "User account")
     @NotBlank
     private String title;
 

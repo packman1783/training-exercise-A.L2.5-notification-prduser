@@ -6,13 +6,28 @@ import java.time.LocalDate;
 
 @Schema(description = "Account in the system")
 public class AccountDTO {
+    @Schema(description = "Unique account identifier", example = "1001")
     private Long id;
+
+    @Schema(description = "Associated user ID", example = "1")
     private Long userId;
+
+    @Schema(description = "User's first name", example = "Max")
     private String userFirstName;
+
+    @Schema(description = "User's last name", example = "Mad")
     private String userLastName;
+
+    @Schema(description = "Account title", example = "Main savings account")
     private String title;
+
+    @Schema(description = "User's email", example = "max.mad@mail.com")
     private String userEmail;
+
+    @Schema(description = "Account creation date", example = "2025-11-06")
     private LocalDate createdAt;
+
+    @Schema(description = "Date when account was last updated", example = "2025-12-01")
     private LocalDate updatedAt;
 
     public String getUserEmail() {

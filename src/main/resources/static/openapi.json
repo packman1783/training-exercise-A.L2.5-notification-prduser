@@ -2,7 +2,7 @@
   "openapi" : "3.0.1",
   "info" : {
     "title" : "Spring Kafka User & Account API",
-    "description" : "REST API for managing users and accounts.\nSupports sending events to the Kafka topic `user.notifications`.\n",
+    "description" : "REST API for managing users and accounts.\nIncludes HATEOAS links and Kafka event publishing.\n",
     "termsOfService" : null,
     "contact" : {
       "name" : "Tea Pot Team",
@@ -21,7 +21,12 @@
     "summary" : null
   },
   "externalDocs" : null,
-  "servers" : null,
+  "servers" : [ {
+    "url" : "http://localhost:8080",
+    "description" : "Local Development Server",
+    "variables" : null,
+    "extensions" : null
+  } ],
   "security" : null,
   "tags" : null,
   "paths" : { },
